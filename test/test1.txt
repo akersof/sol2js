@@ -1,0 +1,21 @@
+pragma solidity ^0.5.8;
+
+import "./test2.sol";
+
+contract test {
+    uint public counter = 0;
+    string public name;
+    uint nb;
+    function prout() public view returns(uint) {
+        //uint counter = 1;
+        return counter;
+    }
+    function zeubi(uint256 _nb, string memory _aname) public payable {
+        nb = _nb;
+        name = _aname;
+    }
+
+    function doAdd(uint a, uint b) public pure returns(uint) {
+        return a + b;
+    }
+}
