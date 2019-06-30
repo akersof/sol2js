@@ -6,6 +6,7 @@ const childProcess = require('child_process');
 const exec = promisify(childProcess.execFile);
 const log = require('./log');
 const {generateClass, generateMethod} = require('./src_gen');
+const ethers = require('ethers');
 
 
 // Output file name of the solc --combined-json
@@ -72,6 +73,19 @@ exports.compile = async (fileName, outDir) => {
         const bin = obj[key].bin;
         contracts[clef] = {"abi": abi, "bin": bin};
     });
+
+    //deploy contract here
+    var provider = new ethers.providers.JsonRpcProvider("http://localhost:7545");
+    const signer = provider.getSigner(0);
+    for(const elem of Object.keys(contracts)) {
+        let factory = new ethers.ContractFactory(contracts[elem].abi, contracts[elem].bin, signer);
+        let contract = await factory.deploy();
+        contracts[elem].address = contract.address;
+        console.log(`◐ Contrat ${elem} en deploiement:`, contract.address);
+        await contract.deployed();
+        console.log("⏺ Contrat déployé");
+    }
+
 
     let classContent = "";
     const keys = Object.keys(contracts);
