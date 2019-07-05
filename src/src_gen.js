@@ -1,11 +1,25 @@
-
-exports.generateClass = (contractsAbi) => {
-    const classCode = '';
-    for(const contract of contractsAbi) {
+class _Contract  {
+    contructor () {
 
     }
 }
 
-exports.generateMethod = (methodAbi) => {
 
-}
+exports.generateClass = (contractsAbi) => {
+    let classSrc = '';
+    for(const contract of contractsAbi) {
+
+    }
+};
+
+exports.generateMethod = (methodAbi) => {
+    let methodSrc = '';
+};
+
+exports.generateReact = (methodAbi) => {
+    let reactHookSrc = '';
+};
+
+exports.generateIndex = (contracts) => {
+    let indexJsSrc = '';
+};

@@ -1,3 +1,14 @@
-const {compile} = require('../index');
+const {compile} = require('../src/sol2js');
+(async () => {
+    try {
+       const obj = await compile('./test2.sol', "./output");
+       console.log(obj);
+    } catch (e) {
+        console.log("exit badly");
+    }
+})();
 
-compile('test1.sol', "./output");
+//const chalk = require('chalk');
+//const path = require('path');
+
+//console.log(path.dirname("./"));
