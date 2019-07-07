@@ -77,7 +77,7 @@ const _compile2json = async (fileName, outDir) => {
 const _compile2js = async (absoluteJsPath, contracts) => {
     let classContent = "";
     let hooksContent = "import React, {useContext, useReducer, useEffect} from 'react';\n" +
-        "import {MetaMaskContext, DappContext} from \"../../context\";\n" +
+        "import {MetaMaskContext, DappContext} from \"../../components/context\";\n" +
         "const contractReducer = (state, action) => {\n" +
         "    switch(action.type) {\n" +
         "        case \"INIT\":\n" +
